@@ -8,10 +8,24 @@ const PARAM = {
 
 export const getData = {
     url: 'database/dataBase.json',
+
+
+    async getData (url) {
+
+        const response = await fetch(url);
+    
+        if(!response.ok){
+            throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`)
+        };
+    
+        return await response.json();
+    
+    },
+
     get(process){
-        fetch(this.url)
-        .then(response => response.json())
-        .then(process);
+        this.getData(this.url)
+        .then(process)
+        .catch((err) => console.error(err));
         
     },
     wishlist(list, callback){
