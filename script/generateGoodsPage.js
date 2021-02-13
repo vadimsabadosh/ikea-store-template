@@ -9,6 +9,7 @@ const generateGoodsPage = () => {
    
 
     const generateCards = (data) => {
+        console.log('data:', data);
         const goodsList = document.querySelector('.goods-list');
         goodsList.textContent = '';
         if (!data.length){
